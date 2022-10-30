@@ -2,13 +2,4 @@
 2022-2023 FSMVU - JavaScript studies
 
 
-Classworks
-
-
-
-
-Homeworks
-
-
-
-Projects
+[Repository](https://github.com/Mustafa-Deveci/AdvancedProgramming-Studies.git)
