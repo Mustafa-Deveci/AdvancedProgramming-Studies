@@ -1,5 +1,6 @@
-# AdvancedProgramming-Studies
-MUSTAFA DEVECİ 
-# 2022-2023 FSMVU
+Advanced Programming Techniques 
+#
 
-[Repository](https://github.com/Mustafa-Deveci/AdvancedProgramming-Studies.git)
+MUSTAFA DEVECİ 
+
+[Visit My Repository](https://github.com/Mustafa-Deveci/AdvancedProgramming-Studies.git)
