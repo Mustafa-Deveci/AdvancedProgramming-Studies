@@ -17,16 +17,20 @@ function tableFor(evt) {
 
 function analyze(min=0) {
   return [...EVENTS]
-    .map(e => ({evt: e, cor: phi(tableFor(e))}))
-    .filter(x => Math.abs(x.cor) > min)
-    .map(x => x.evt+": "+x.cor.toFixed(4))
-  // let a = [];
-  // for (let e of EVENTS) {
-  //   let cor = phi(tableFor(e));
-  //   if (Math.abs(cor) > min)
-  //     a.push(e+": "+cor.toFixed(4))
-  // }
-  // return a
+    //.map(e => ({evt: e, cor: phi(tableFor(e))}))
+    //.filter(x => Math.abs(x.cor) > min)
+    //.map(x => x.evt+": "+x.cor.toFixed(4))
+  let count = 0;
+  let arr = [];
+  let a = [];
+   for (let e of EVENTS) {
+     let cor = phi(tableFor(e));
+     arr = tableFor(e)
+     count = arr[1] + arr[3];
+     if (Math.abs(cor) > min)
+       a.push(e+": "+cor.toFixed(4)+ "Counter" : count)
+   }
+   return a
 }
 
 function journalEvents() {
