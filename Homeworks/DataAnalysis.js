@@ -28,7 +28,7 @@ function analyze(min=0) {
      arr = tableFor(e)
      count = arr[1] + arr[3];
      if (Math.abs(cor) > min)
-       a.push(e+": "+cor.toFixed(4)+ "Counter : " + count)
+       a.push(e+": "+cor.toFixed(4)+ " total => " + count)
    }
    return a
 }
