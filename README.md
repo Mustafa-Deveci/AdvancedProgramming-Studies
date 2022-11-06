@@ -1,6 +1,6 @@
 2022-2023 Advanced Programming Techniques course studies
 
-CW#0 - Browser Tools
+CW#0 - Browser Tools -> [Solution](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/Classworks/Counting.html)
 
 1. Translate Counting.html to Turkish. Also modify colors as you like.
 
@@ -10,7 +10,7 @@ s=''; while (     ) {s=   ; console.log(s)}
 (just complete this line, no need to define a function)
 Put into LMS a single screenshot (converted to PDF) showing both answers in the console.
 
-CW#1 - IBAN Verification
+CW#1 - IBAN Verification -> [Solution](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/Classworks/IBANverify.html)
 
 0. Make a private GitHub repo for your exclusive use in this course. User name should identify you, repo name cannot be BLM305 or 2022. Enable GitHub Pages.
 
@@ -24,7 +24,7 @@ Reference: maeyler.github.io/JS/math/TCKimlik
 
 You will submit a screenshot (max-width: 600px) to summarize all your work (include valid and invalid numbers)
 
-CW#2 – Text to Objects
+CW#2 – Text to Objects -> [Solution](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/Classworks/List%20of%20Objects.html)
 
 Copy this file to your local repo
 https://blm305.github.io/2022/work/ObjectList
@@ -35,7 +35,7 @@ https://blm305.github.io/2022/work/ObjectList
 
 Put your code, your explanation, and a screen shot on the same PDF file
 
-CW#3 – Object Inspector
+CW#3 – Object Inspector -> [Solution](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/Classworks/Inspector.html)
 
 Use the Inspector -- no need to copy to your local repo
 https://blm305.github.io/2022/work/Inspector
@@ -50,7 +50,7 @@ https://blm305.github.io/2022/work/Inspector
 2. Reload and invoke filter() and map() methods on JOURNAL of Chap4
 
 
-CW#4 – Fetching Remote Files
+CW#4 – Fetching Remote Files -> [Solution](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/Classworks/xxx.html)
 
 Put a copy of this file to your repo https://blm305.github.io/2022/work/fetch.html
 
