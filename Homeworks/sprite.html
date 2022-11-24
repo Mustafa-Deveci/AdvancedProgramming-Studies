@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fetch And Animations</title>
+</head>
+
+<body>
+    <div>
+        <h2>Fetch & Animation</h2>
+        <hr>
+        <canvas id="canvas" width="600" height="200"></canvas>
+        <hr>
+        <div>
+            <button style="border-color: blue " onclick="start()"> START</button>
+            <button style="border-color: blue " onclick="pause()"> PAUSE</button>
+            <button style="border-color: blue " onclick="stop()"> STOP</button>
+            <button style="border-color: blue " id="next" disabled="true" onclick="next()"> NEXT </button>
+            <button style="border-color: blue " id="prev" disabled="true" onclick="prev()"> PREV </button>
+        </div>
+    </div>
+    <script>
+
+        //canvas yükseklik ve genişlik
+        const canvasWidth = 600;
+        const canvasHeight = 330;
+        //her bir sprite resminin yükseklik ve genişliği 1 satır 6 sütun resim adet  
+        const width = 688 / 6;
+        const height = 178 / 1;
+
+        var Frame = 0;
+
+        //hırsızın sıfırdan başlng yeri
+        var x = -120;
+        var y = 150;
+
+        var srcX;
+        var srcY;
+
+        var run = true;
+        var paused = false;
+        var pauseCount = 0;
+        
+        //fazlalık 
+        let excess = 100
+
+        var canvas = document.getElementById('canvas');
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        var ctx = canvas.getContext("2d");
+        var thief = new Image();
+
+
+        //fetch - > blob ile okuma işlemi
+        const imageUrl = "https://mustafa-deveci.github.io/AdvancedProgramming-Studies/Homeworks/sprite.png";
+        fetch(imageUrl)
+            .then(response => response.blob())
+            .then(imageBlob => {
+                const imageObjectURL = URL.createObjectURL(imageBlob);
+                thief.src = imageObjectURL
+            });
+
+        var toRight = 0;
+
+        function updateFrame() {
+
+            Frame = ++Frame % 6;
+            console.log(Frame);
+            srcX = Frame * width;
+            console.log(srcX)
+            ctx.clearRect(x, y, width, height);
+
+            if (run && x == (canvasWidth - excess)) x = -excess
+            if (run && x < canvasWidth) {
+                srcY = (toRight * height);
+                x += 20;
+            }
+
+        }
+
+        function draw() {
+            if (!paused) {
+                updateFrame();
+                ctx.drawImage(thief, srcX, srcY, width, height, x, y, width, height);
+            }
+        }
+        function start() {
+            location.reload()
+        }
+        function pause() {
+            pauseCount++
+            if (pauseCount % 2 == 1) {
+                paused = true
+
+                document.getElementById("next").removeAttribute("disabled")
+                document.getElementById("prev").removeAttribute("disabled")
+            } else {
+                paused = false
+
+                document.getElementById("next").setAttribute("disabled", true)
+                document.getElementById("prev").setAttribute("disabled", true)
+            };
+        }
+
+        function stop() {
+            paused = true
+            start = false
+        }
+
+        function prev() {
+
+            if (Frame != 0 ? Frame = --Frame : Frame = 5)
+                console.log(Frame);
+            srcX = (Frame * width);
+            console.log(srcX)
+            ctx.clearRect(x, y, width, height);
+
+            if (run && x == (canvasWidth - excess)) x = -excess
+            if (run && x < canvasWidth) {
+                srcY = (toRight * height);
+                x -= 20;
+            }
+            ctx.drawImage(thief, srcX, srcY, width, height, x, y, width, height);
+        }
+        function next() {
+
+            updateFrame();
+            ctx.drawImage(thief, srcX, srcY, width, height, x, y, width, height);
+        }
+        setInterval(draw, 80);
+
+    </script>
+</body>
+
+</html>
