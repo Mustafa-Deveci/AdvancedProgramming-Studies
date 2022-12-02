@@ -72,3 +72,12 @@ b.onlevelchange, b.onchargingchange where b is BatteryManager
 onoffline, ononline, onkeydown, onkeyup (using window object)
 Here is the desired output: 
 Events
+
+##
+CW#6 -- GitHub users API
+Copy the following page to your own repo and replace it:
+https://maeyler.github.io/JS/api/GitHub_Users
+
+1. You must have an avatar that represents you on GitHub. It could be a close-up of a face, a drawing, or a logo. We will use this on the project page.
+
+2. Discard the excess on the page, when you enter your own username and the data should come.
