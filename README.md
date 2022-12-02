@@ -75,6 +75,7 @@ Events
 
 ##
 CW#6 -- GitHub users API  ->  [Solution](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/Classworks/GitHub_Users.html)
+
 Copy the following page to your own repo and replace it:
 https://maeyler.github.io/JS/api/GitHub_Users
 
