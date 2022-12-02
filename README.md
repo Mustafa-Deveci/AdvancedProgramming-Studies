@@ -61,3 +61,14 @@ Modify title, xxx items, and the default URL (must be different for each student
 Complete init() and check() functions so that xxx items on the page are filled with correct values. Battery level must be an integer percent value. Latitude/Longitude must be in this order, with 4 digits after the decimal point, separated by a comma.
 
 Take a partial screen shot of the page only (max 600px width) – do not include the console. Put the image into the required PDF.
+
+##
+CW#5 -- Event listeners
+Copy and modify your web page for CW4
+
+Listen to the following events:
+
+b.onlevelchange, b.onchargingchange where b is BatteryManager
+onoffline, ononline, onkeydown, onkeyup (using window object)
+Here is the desired output: 
+Events
