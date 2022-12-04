@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="https://blm-fsmvu.github.io/305/images/icon192.png">
+    <title>EventListeners </title>
+
+  <style> 
+    body { max-width: 440px; }
+    #url { width: 190px; }
+    span, #url { color: rgb(250, 7, 7); }
+  </style>
+</head>
+
+<body>  
+
+
+<h2>
+  Battery Status
+</h2>
+<h3>
+  Charge Level :<span id="level">44%</span>
+  <p id = "chargeState">Charging...</p>
+  <p id = "time">0</p>
+</h3>
+<h2>
+  Online Status
+</h2>
+<h3>
+   <span id ="cnn">connected online</span>
+</h3>
+<h2 style="color:rgb(4, 4, 4)">
+  Keyboard:
+</h2>
+<h3>
+  <span id = "keyPressed"></span>
+</h3>
+<hr>
+<b>Sample code</b>
+<pre id="sample">function init() {<br>    plat.innerText = navigator.platform<br>    navigator.geolocation.getCurrentPosition(p =&gt; <br>      loc.innerText = p.coords.latitude.toFixed(4)<br>                +', '+p.coords.longitude.toFixed(4)<br>    )<br>    navigator.getBattery().then(b =&gt; <br>      level.innerText = 100*b.level+'%'<br>    )<br>    check()<br>}<br>function check() {<br>    fetch(url.value).then(r =&gt; <br>      resp.innerText = r.ok? 'OK' : 'Not found'<br>    ).catch(e =&gt; resp.innerText = e)<br>}</pre>
+
+<hr>
+
+<script>
+"use strict";
+function init() {
+    navigator.getBattery().then(b =>{
+      level.innerText = (100*b.level).toFixed(0)+'%'
+      b.onlevelchange = ()=> {
+        level.innerText = (100*b.level).toFixed(0)+'%'
+        let i = b.chargingTime/3600;
+        time.innerText = i.toFixed(2)+" remaining";
+        
+      }
+      b.onchargingchange = ()=> chargeState.innerText = 
+        (b.charging)?"Charging...":"Discharging..."
+      
+    });
+    window.addEventListener('online',
+    (event)=>cnn.innerText= "connected online")
+    window.addEventListener('offline',
+    (event)=>cnn.innerText= "connected offline")
+    onkeydown = (event)=> keyPressed.innerText = event.key;
+    onkeyup = (event) => keyPressed.inenrText = event.key;
+}
+    sample.innerText = init+'\n';
+    init();
+</script>
+</body>
+</html>
