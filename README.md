@@ -63,7 +63,8 @@ Complete init() and check() functions so that xxx items on the page are filled w
 Take a partial screen shot of the page only (max 600px width) – do not include the console. Put the image into the required PDF.
 
 ##
-CW#5 -- Event listeners
+CW#5 -- Event listeners -> [Solution](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/Classworks/EventListener.html)
+
 Copy and modify your web page for CW4
 
 Listen to the following events:
