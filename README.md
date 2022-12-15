@@ -85,7 +85,7 @@ https://maeyler.github.io/JS/api/GitHub_Users
 2. Discard the excess on the page, when you enter your own username and the data should come.
 
 ##
-CW#7 -- Open Weather API  ->  [Solution](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/Classworks/Open Weather.html)
+CW#7 -- Open Weather API  ->  [Solution](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/Classworks/OpenWeather.html)
 
 
 https://blm305.github.io/2022/work/Weather.html
