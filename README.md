@@ -83,3 +83,32 @@ https://maeyler.github.io/JS/api/GitHub_Users
 1. You must have an avatar that represents you on GitHub. It could be a close-up of a face, a drawing, or a logo. We will use this on the project page.
 
 2. Discard the excess on the page, when you enter your own username and the data should come.
+
+##
+CW#7 -- Open Weather API  ->  [Solution](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/Classworks/Open Weather.html)
+
+
+https://blm305.github.io/2022/work/Weather.html
+
+Copy it to your own repo, add it to your homepage. Show the weather inside the canvas element. Thus, you get a copyable picture of the weather forecast.
+
+You will need a KEY to run the application, if you still do not receive it, use the key provided in the mail: 1e198835246bf67f6fdee02ed5f4786e
+
+Show/describe your work in a PDF report -- the code you add must be in the Report
+
+##
+CW#8 -- Open Maps API  ->  [Solution](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/Classworks/OpenMapsAPI.html)
+
+Add a map to the Weather app
+ (Make a new file, don't mess with the CW#7 assignment)
+
+* No redundancy on the screen (code, reference, etc.)
+
+* Show your original location with zoom=10
+
+* Show weather while centering given/Clicked Lat/Long point:
+    MAP.on('zoom', report) // not needed
+    MAP.on('click', ...) //show weather
+* Bonus: Find the name of the country from the abbreviation
+
+Have only the weather and the map on the page you made. Upload your changes to the code and screenshot as PDF. The code you add must be in the PDF
