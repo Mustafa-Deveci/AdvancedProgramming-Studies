@@ -116,7 +116,7 @@ Add a map to the Weather app
 Have only the weather and the map on the page you made. Upload your changes to the code and screenshot as PDF. The code you add must be in the PDF
 
 ##
-HW#1 -- Array Methods  ->  [Solution](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/Homeworks/Data Analysis.html)
+HW#1 -- Array Methods  ->  [Solution](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/Homeworks/DataAnalysis.html)
 
 1. Do “The sum of a range” exercise in Chap 4 https://eloquentjavascript.net/04_data.html#h_TcUD2vzyMe
 
