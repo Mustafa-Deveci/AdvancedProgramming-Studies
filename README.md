@@ -114,3 +114,16 @@ Add a map to the Weather app
 * Bonus: Find the name of the country from the abbreviation
 
 Have only the weather and the map on the page you made. Upload your changes to the code and screenshot as PDF. The code you add must be in the PDF
+
+##
+HW#1 -- Array Methods  ->  [Solution](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/Homeworks/Data Analysis.html)
+
+1. Do “The sum of a range” exercise in Chap 4 https://eloquentjavascript.net/04_data.html#h_TcUD2vzyMe
+
+2. Modify analyze() method in Chap 4 so that it counts the number days for each event type.
+For instance, pizza: 0.0686 10  ("pizza" occurs in 10 Entries)
+
+3. Use the methods filter(), map(), forEach() on the JOURNAL array, to illustrate some queries on the data.
+
+
+
