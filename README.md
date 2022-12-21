@@ -125,5 +125,20 @@ For instance, pizza: 0.0686 10  ("pizza" occurs in 10 Entries)
 
 3. Use the methods filter(), map(), forEach() on the JOURNAL array, to illustrate some queries on the data.
 
+##
+HW#2 -- Organize your private repo   
+1. User name and avatar must represent you in a large time span (20 years).
+These names are not acceptable: (modify your name)
+emirs52, mfercakir, hfurkana, usa432018
 
+These and similar names should change to indicate the owner.
 
+2. A single private repo is required for this course. Do not make a repo for each homework. The name of the repo must represent this course. GitHub pages must be activated so that you can supply public links.
+
+For this lesson you will only have one repo, you will edit it
+
+3. The main page (index.html) of your repo will contain links to your work (CW, HW, Project) and to the repo: github.com/user/repo
+Have links to all your works (CW, HW, Project) and the repo itself on the home page of your repo (index.html). There will be one github.com link, the others github.io
+
+4. We explained how to give github.io link when the repo is private.
+5. All links must be web pages (html), not pdf or png
