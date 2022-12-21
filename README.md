@@ -142,3 +142,21 @@ Have links to all your works (CW, HW, Project) and the repo itself on the home p
 
 4. We explained how to give github.io link when the repo is private.
 5. All links must be web pages (html), not pdf or png
+
+HW#3 - Fetch & Animations
+
+1) Each step of the animation characters is stored in files called sprites. The movements of the characters are drawn by playing these consecutive pictures.)
+2) For a sprite file you have chosen in this assignment, you must perform all the movements of the character sequentially.)
+3) Each picture in the sprite file of the selected character will be splitted and uploaded to the folder you opened in your Github repo. For example, if there are 10 movements in the sprite file, there should be 10 images)
+4) Using the Fetch command, these images will be taken in order and drawn on the screen with JS animations. We need to see the character move as a whole. Just like a gif file.)
+5) There should be 5 buttons below the animation:
+    - Start: Starts the animation from the beginning.
+
+    - Pause: Pauses the animation where it is, and when pressed again, it will continue the animation from where it left off.
+
+    - Stop: Animation is stopped.
+
+    - Next: It should be active only when the animation is stopped or the pause button is pressed, and the motion (animation) after the current animation position should be drawn on the screen.
+
+    - Prev: It should be active only when the animation is stopped or the pause button is pressed, and the motion (animation) before the current animation position should be drawn on the screen.)
+
