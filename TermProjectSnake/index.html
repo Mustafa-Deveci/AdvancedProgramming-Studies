@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <link rel="icon" href="./JS.png">
+    <link rel="manifest" href="manifest.json">
+    <script>navigator.serviceWorker.register('sw.js')</script>
+    <title>Snake Game</title>
+    <style>
+        button#mu {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+        button#mu:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -10px;
+            margin-left: -5px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 20px solid currentColor;
+        }
+
+        button#ml {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+        button#ml:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -5px;
+            margin-left: -10px;
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-right: 20px solid currentColor;
+        }
+
+        button#md {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+        button#md:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -10px;
+            margin-left: -5px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 20px solid currentColor;
+        }
+
+        button#mr {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+        button#mr:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -5px;
+            margin-left: -10px;
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 20px solid currentColor;
+        }
+
+        * {
+            margin: 0;
+            border: 0;
+            color: rgb(244, 5, 5);
+            box-sizing: border-box;
+            font-family: 'consolas';
+            text-align: center;
+
+        }
+
+        body {
+            height: 100%;
+            background: rgb(6, 6, 6);
+            padding-top: 2rem;
+        }
+
+        h1 {
+            letter-spacing: 0rem;
+        }
+
+        #game-canvas {
+            display: block;
+            margin: auto;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #f9f8f8;
+        }
+
+        button {
+            width: 60px;
+            height: 50px;
+        }
+
+        .start {
+            width: 80px;
+            height: 30px;
+            border-radius: px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>SNAKE GAME</h1>
+    <h2 id="score"></h2>
+
+    <button class="start" onclick="start()"> START</button>
+
+
+    <canvas width="400" height="400" id="game-canvas"></canvas>
+    <div>
+        <button id="mu" onclick="moveup()"></button>
+        <hr>
+        <br>
+        <div id="spc"> </div>
+        <button id="ml" onclick="moveleft()"></button>
+        <button id="md" onclick="movedown()"></button>
+        <button id="mr" onclick="moveright()"></button>
+        <hr>
+
+    </div>
+    <script>
+
+        'use strict'
+
+        const tileCount = 20;         // logical game area size
+        const tileSize = 20;          // size of each tile, pixels
+
+        let canvas;
+        let context;
+
+        let playerX;
+        let playerY;
+        let hasChangedDirection;
+        let score;
+        let gameOver;
+        let foodX;
+        let foodY;
+        let movementX;
+        let movementY;
+        let tailLength;
+        let tail = [];
+
+        initialize();
+
+        window.onload = function () {
+            canvas = document.getElementById("game-canvas");
+            context = canvas.getContext("2d");
+            document.addEventListener("keydown", keyDown);
+            setInterval(mainLoop, 1000 / 5);
+        }
+
+        function mainLoop() {
+            processGameLogic();
+            render();
+        }
+
+        function start() {
+            location.reload()
+        }
+
+        function processGameLogic() {
+            if (gameOver) {
+                return;
+            }
+
+            // move
+            hasChangedDirection = false;
+            playerX += movementX;
+            playerY += movementY;
+
+            // handle game area wraparound
+            if (playerX < 0) { playerX = tileCount - 1; }
+            if (playerX > tileCount - 1) { playerX = 0; }
+            if (playerY < 0) { playerY = tileCount - 1; }
+            if (playerY > tileCount - 1) { playerY = 0; }
+
+            // handle self collision, i.e. game over
+            // (this could be done in rendering to avoid 2 passes or we could use an index, lookup etc.)
+            for (let t of tail) {
+                if (t.x === playerX && t.y === playerY) {
+                    gameOver = true;
+                    break;
+                }
+            }
+
+            // handle food collision
+            if (foodX === playerX && foodY === playerY) {
+                tailLength++;
+                score++;
+
+                foodX = Math.floor(Math.random() * tileCount);
+                foodY = Math.floor(Math.random() * tileCount);
+            }
+
+            // add current pos to head of tail, remove excess tail
+            tail.push({ x: playerX, y: playerY });
+            while (tail.length > tailLength) {
+                tail.shift();
+            }
+        }
+
+        function render() {
+            // background
+            context.fillStyle = "black";
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            // player/snake
+            for (let i = 0; i < tail.length; i++) {
+                context.fillStyle = i === tail.length - 1 ? "aqua" : "lime";
+
+                let t = tail[i];
+                context.fillRect(t.x * tileSize, t.y * tileSize, tileSize - 2, tileSize - 2);
+            }
+
+            // food
+            context.fillStyle = "deeppink";
+            context.fillRect(foodX * tileSize, foodY * tileSize, tileSize - 2, tileSize - 2);
+
+            // scoring etc.
+            showScore(score);
+            showGameOver(gameOver);
+        }
+
+        function showScore(score) {
+            let scoreBoard = document.getElementById("score");
+            scoreBoard.innerHTML = "Score: " + score;
+        }
+
+        function showGameOver(gameOver) {
+            if (!gameOver) {
+                return;
+            }
+
+            context.font = "6rem consolas";
+            context.fillText("GAME", 70, 180);
+            context.fillText("OVER", 70, 270);
+        }
+
+        function moveleft() {
+            movementX = -1; movementY = 0; hasChangedDirection = true;
+            document.getElementById("ml").disabled = false;
+            document.getElementById("mr").disabled = true;
+            document.getElementById("mu").disabled = false;
+            document.getElementById("md").disabled = false;
+        }
+        function moveright() {
+            movementX = 1; movementY = 0; hasChangedDirection = true;
+            document.getElementById("ml").disabled = true;
+            document.getElementById("mr").disabled = false;
+            document.getElementById("mu").disabled = false;
+            document.getElementById("md").disabled = false;
+        }
+        function moveup() {
+            movementX = 0; movementY = -1; hasChangedDirection = true;
+            document.getElementById("ml").disabled = false;
+            document.getElementById("mr").disabled = false;
+            document.getElementById("mu").disabled = false;
+            document.getElementById("md").disabled = true;
+        }
+        function movedown() {
+            movementX = 0; movementY = 1; hasChangedDirection = true;
+            document.getElementById("ml").disabled = false;
+            document.getElementById("mr").disabled = false;
+            document.getElementById("mu").disabled = true;
+            document.getElementById("md").disabled = false;
+        }
+
+        function keyDown(e) {
+            // space
+            if (e.keyCode === 32 && gameOver) {
+                initialize();
+                return;
+            }
+
+            // avoid multiple movement changes within one game "tick"
+            if (hasChangedDirection) {
+                return;
+            }
+
+            switch (e.keyCode) {
+                case 37:    // left arrow
+                    if (movementX !== 1) {
+                        movementX = -1; movementY = 0; hasChangedDirection = true
+                        document.getElementById("ml").disabled = false;
+                        document.getElementById("mr").disabled = true;
+                        document.getElementById("mu").disabled = false;
+                        document.getElementById("md").disabled = false;
+                    }
+                    break;
+
+                case 38:    // up arrow
+                    if (movementY !== 1) {
+                        movementX = 0; movementY = -1; hasChangedDirection = true
+                        document.getElementById("ml").disabled = false;
+                        document.getElementById("mr").disabled = false;
+                        document.getElementById("mu").disabled = false;
+                        document.getElementById("md").disabled = true;
+                    }
+                    break;
+
+                case 39:    // right arrow
+                    if (movementX !== -1) {
+                        movementX = 1; movementY = 0; hasChangedDirection = true
+                        document.getElementById("ml").disabled = true;
+                        document.getElementById("mr").disabled = false;
+                        document.getElementById("mu").disabled = false;
+                        document.getElementById("md").disabled = false;
+                    }
+                    break;
+
+                case 40:    // down arrow
+                    if (movementY !== -1) {
+                        movementX = 0; movementY = 1; hasChangedDirection = true
+                        document.getElementById("ml").disabled = false;
+                        document.getElementById("mr").disabled = false;
+                        document.getElementById("mu").disabled = true;
+                        document.getElementById("md").disabled = false;
+                    }
+                    break;
+            }
+
+
+        }
+
+        function initialize() {
+            playerX = 5;
+            playerY = 10;
+            hasChangedDirection = false;
+            score = 0;
+            foodX = Math.floor(Math.random() * tileCount);
+            foodY = Math.floor(Math.random() * tileCount);
+            movementX = 1;
+            movementY = 0;
+            tailLength = 5;
+            tail = [];
+            gameOver = false;
+            document.getElementById("ml").disabled = true;
+        }
+    </script>
+</body>
+</html>
