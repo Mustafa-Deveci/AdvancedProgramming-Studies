@@ -1,25 +1,19 @@
-function save(req, resp) {
-  return caches.open(CACHE)
-  .then(cache => {
-    cache.put(req, resp.clone());
-    return resp;
-  }) 
-  .catch(console.log)
+const CACHE ='TermProjectSnake'
+const FILES = ['JS.png','index.html','manifest.json','sw.js','./']
+function installCB(e) {
+  e.waitUntil(
+    caches.open(CACHE)
+    .then(cache => cache.addAll(FILES))
+    .catch(console.log)
+  )
 }
-function fetchCB(e) {
-  let req = e.request;
-  e.respondWith(
-    fetch(req)
-      .then(response => {
-        if (!response) {
-          throw new Error("No response from server");
-        }
-        return save(req, response);
-      })
-      .catch(error => {
-        console.error(error);
-        return caches.match(req);
-      })
-  );
-}
-self.addEventListener('fetch', fetchCB)
+self.addEventListener('install', installCB)
+function cacheCB(e) { //cache first
+    let req = e.request
+    e.respondWith(
+      caches.match(req)
+      .then(r1 => r1 || fetch(req))
+      .catch(console.log)
+    )
+  }
+  self.addEventListener('fetch', cacheCB)
