@@ -6,11 +6,20 @@ function save(req, resp) {
   }) 
   .catch(console.log)
 }
-function fetchCB(e) { //fetch first
-  let req = e.request
+function fetchCB(e) {
+  let req = e.request;
   e.respondWith(
-    fetch(req, {credentials: 'same-origin'}).then(r2 => save(req, r2))
-    .catch(() => { return caches.match(req, {credentials: 'same-origin'}).then(r1 => r1) })
-  )
+    fetch(req)
+      .then(response => {
+        if (!response) {
+          throw new Error("No response from server");
+        }
+        return save(req, response);
+      })
+      .catch(error => {
+        console.error(error);
+        return caches.match(req);
+      })
+  );
 }
 self.addEventListener('fetch', fetchCB)
