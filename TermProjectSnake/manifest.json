@@ -1,0 +1,14 @@
+{
+    "name": "SnakeGame",
+    "start_url": "snake.html",
+    "display": "standalone",
+    "background_color": "#cef",
+    "theme-color": "#cef" ,
+    "icons": [
+      {
+        "src": "JS.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
