@@ -1,5 +1,5 @@
 const CACHE ='TermProjectSnake'
-const FILES = ['JS.png','snake.html','manifest.json','sw.js','./']
+const FILES = ['JS.png','index.html','manifest.json','sw.js','./']
 function installCB(e) {
   e.waitUntil(
     caches.open(CACHE)
