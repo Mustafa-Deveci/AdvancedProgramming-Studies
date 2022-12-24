@@ -101,7 +101,7 @@
         body {
             height: 100%;
             background: rgb(6, 6, 6);
-            padding-top: 2rem;
+            padding-top: 1rem;
         }
 
         h1 {
@@ -122,10 +122,12 @@
         }
 
         .start {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 80px;
             height: 30px;
-            border-radius: px;
-
+            border-radius: 50px;
         }
     </style>
 </head>
@@ -133,10 +135,7 @@
 <body>
     <h1>SNAKE GAME</h1>
     <h2 id="score"></h2>
-
     <button class="start" onclick="start()"> START</button>
-
-
     <canvas width="400" height="400" id="game-canvas"></canvas>
     <div>
         <button id="mu" onclick="moveup()"></button>
@@ -369,4 +368,5 @@
         }
     </script>
 </body>
+
 </html>
