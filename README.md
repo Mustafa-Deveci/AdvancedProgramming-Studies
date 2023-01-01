@@ -161,6 +161,6 @@ HW#3 - Fetch & Animations
     - Prev: It should be active only when the animation is stopped or the pause button is pressed, and the motion (animation) before the current animation position should be drawn on the screen.)
 
 ##
-TERM PROJECT   [-->](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/TermProjectSnake/index.html)
+TERM PROJECT   [--> Snake Game <--](https://mustafa-deveci.github.io/AdvancedProgramming-Studies/TermProjectSnake/index.html)
 Develop a web application (PWA) using JavaScript and HTML
 Your app should run smoothly on narrow screen and offline.
